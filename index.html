@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portfolio Chakib Ould Otmane</title>
+<meta name="description" content="Portfolio de Chakib Ould Otmane.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* Fiche d'identité technique : grand nom condensé, colonne de titres à gauche, un seul accent jaune marqueur */
+  --paper: #F3F2EC;
+  --surface: #FBFAF6;
+  --ink: #16171B;
+  --muted: #5B5E66;
+  --line: #D7D5CC;
+  --accent: #FFD43B;
+  --on-accent: #16171B;
+  --font-display: "Big Shoulders Display", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #121317;
+    --surface: #1A1B20;
+    --ink: #EDECE6;
+    --muted: #A2A4AC;
+    --line: #2E3037;
+    --accent: #FFD43B;
+    --on-accent: #16171B;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #121317;
+  --surface: #1A1B20;
+  --ink: #EDECE6;
+  --muted: #A2A4AC;
+  --line: #2E3037;
+  --accent: #FFD43B;
+  --on-accent: #16171B;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-radius: 2px; }
+::selection { background: var(--accent); color: var(--on-accent); }
+
+.skip {
+  position: absolute; left: 16px; top: -100px; z-index: 10;
+  background: var(--ink); color: var(--paper);
+  padding: 8px 14px; border-radius: 4px; text-decoration: none;
+}
+.skip:focus { top: 12px; }
+
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: clamp(16px, 4vw, 40px); padding-right: clamp(16px, 4vw, 40px); }
+
+/* En-tête */
+.site-head {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  gap: 10px 24px; padding-top: 20px; padding-bottom: 20px;
+}
+.brand { font-family: var(--font-mono); font-size: .875rem; font-weight: 500; letter-spacing: .02em; text-decoration: none; }
+.site-head nav { display: flex; flex-wrap: wrap; gap: 4px 20px; }
+.site-head nav a {
+  font-size: .9375rem; color: var(--muted); text-decoration: none;
+  padding: 4px 0; border-bottom: 2px solid transparent;
+  transition: color .15s, border-color .15s;
+}
+.site-head nav a:hover { color: var(--ink); border-bottom-color: var(--accent); }
+
+/* Hero */
+.hero { padding-top: clamp(28px, 6vw, 72px); padding-bottom: clamp(56px, 8vw, 96px); }
+h1 {
+  font-family: var(--font-display); font-weight: 900; text-transform: uppercase;
+  font-size: clamp(3.5rem, 9vw, 7.5rem); line-height: .86; letter-spacing: .005em;
+  margin: 0; text-wrap: balance;
+}
+h1 .l1 { display: block; }
+h1 .l2 { position: relative; display: inline-block; }
+h1 .l2::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -.12em; height: .09em;
+  background: var(--accent); transform-origin: left center;
+  animation: sweep .9s .2s cubic-bezier(.2, .8, .2, 1) both;
+}
+@keyframes sweep { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+/* Sections */
+.block {
+  display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 16px 48px;
+  padding-top: 56px; padding-bottom: 56px; border-top: 1.5px solid var(--ink);
+}
+.block-head h2 {
+  font-family: var(--font-display); font-weight: 800; text-transform: uppercase;
+  font-size: clamp(2.25rem, 4vw, 2.75rem); line-height: .95; letter-spacing: .01em; margin: 0;
+}
+.empty { margin: 0; padding-top: .6rem; font-family: var(--font-mono); font-size: .875rem; color: var(--muted); }
+
+/* Pied de page */
+.foot {
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px;
+  padding-top: 24px; padding-bottom: 40px; border-top: 1.5px solid var(--ink);
+  font-family: var(--font-mono); font-size: .8125rem; color: var(--muted);
+}
+.foot p { margin: 0; }
+
+@media (max-width: 760px) {
+  .block { grid-template-columns: minmax(0, 1fr); padding-top: 40px; padding-bottom: 40px; }
+  .empty { padding-top: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#contenu">Aller au contenu</a>
+
+<header class="wrap site-head">
+  <a class="brand" href="#top">C. Ould Otmane</a>
+  <nav aria-label="Sections">
+    <a href="#projets">Projets</a>
+    <a href="#parcours">Parcours</a>
+    <a href="#competences">Compétences</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main id="contenu">
+  <section class="wrap hero" id="top" aria-label="Présentation">
+    <h1><span class="l1">Chakib</span><span class="l2">Ould Otmane</span></h1>
+  </section>
+
+  <section class="wrap" id="projets" aria-labelledby="t-projets">
+    <div class="block">
+      <div class="block-head"><h2 id="t-projets">Projets</h2></div>
+      <p class="empty">À venir.</p>
+    </div>
+  </section>
+
+  <section class="wrap" id="parcours" aria-labelledby="t-parcours">
+    <div class="block">
+      <div class="block-head"><h2 id="t-parcours">Parcours</h2></div>
+      <p class="empty">À venir.</p>
+    </div>
+  </section>
+
+  <section class="wrap" id="competences" aria-labelledby="t-competences">
+    <div class="block">
+      <div class="block-head"><h2 id="t-competences">Compétences</h2></div>
+      <p class="empty">À venir.</p>
+    </div>
+  </section>
+
+  <section class="wrap" id="contact" aria-labelledby="t-contact">
+    <div class="block">
+      <div class="block-head"><h2 id="t-contact">Contact</h2></div>
+      <p class="empty">À venir.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">
+  <div class="foot">
+    <p>© 2026 Chakib Ould Otmane</p>
+  </div>
+</footer>
+</body>
+</html>
