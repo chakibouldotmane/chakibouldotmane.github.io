@@ -4,13 +4,18 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Portfolio Chakib Ould Otmane</title>
-<meta name="description" content="Portfolio de Chakib Ould Otmane.">
+<meta name="description" content="Portfolio de Chakib Ould Otmane, étudiant en BTS SIO à Roubaix, à la recherche d'un stage en informatique.">
+<meta property="og:title" content="Chakib Ould Otmane, étudiant en BTS SIO">
+<meta property="og:description" content="Portfolio, compétences et contact.">
+<meta property="og:url" content="https://chakibouldotmane.github.io/">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%2316171B'/><text x='32' y='34' dominant-baseline='middle' text-anchor='middle' font-family='Arial Narrow,Arial,sans-serif' font-weight='900' font-size='30' fill='%23FFD43B'>CO</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
-  /* Fiche d'identité technique : grand nom condensé, colonne de titres à gauche, un seul accent jaune marqueur */
+  /* Accueil : nom condensé à gauche, carte de code profil.js à droite, un seul accent jaune marqueur */
   --paper: #F3F2EC;
   --surface: #FBFAF6;
   --ink: #16171B;
@@ -18,6 +23,13 @@
   --line: #D7D5CC;
   --accent: #FFD43B;
   --on-accent: #16171B;
+  --dot: #157A45;
+  --code-bg: #16171B;
+  --code-ink: #E9E8E2;
+  --code-muted: #858A94;
+  --code-str: #B7E4C4;
+  --code-line: #2B2D34;
+  --shadow: rgba(22, 23, 27, .35);
   --font-display: "Big Shoulders Display", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
   --font-body: "IBM Plex Sans", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
@@ -30,8 +42,9 @@
     --ink: #EDECE6;
     --muted: #A2A4AC;
     --line: #2E3037;
-    --accent: #FFD43B;
-    --on-accent: #16171B;
+    --code-bg: #1D1F25;
+    --code-line: #33363E;
+    --shadow: rgba(0, 0, 0, .55);
     color-scheme: dark;
   }
 }
@@ -41,8 +54,9 @@
   --ink: #EDECE6;
   --muted: #A2A4AC;
   --line: #2E3037;
-  --accent: #FFD43B;
-  --on-accent: #16171B;
+  --code-bg: #1D1F25;
+  --code-line: #33363E;
+  --shadow: rgba(0, 0, 0, .55);
   color-scheme: dark;
 }
 
@@ -74,7 +88,12 @@ a { color: inherit; }
   display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
   gap: 10px 24px; padding-top: 20px; padding-bottom: 20px;
 }
-.brand { font-family: var(--font-mono); font-size: .875rem; font-weight: 500; letter-spacing: .02em; text-decoration: none; }
+.brand { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-mono); font-size: .875rem; font-weight: 500; letter-spacing: .02em; text-decoration: none; }
+.brand-mark {
+  display: inline-grid; place-items: center; width: 30px; height: 30px; border-radius: 6px;
+  background: var(--code-bg); border: 1px solid var(--code-line); color: var(--accent);
+  font-family: var(--font-display); font-weight: 900; font-size: 1rem; letter-spacing: .02em;
+}
 .site-head nav { display: flex; flex-wrap: wrap; gap: 4px 20px; }
 .site-head nav a {
   font-size: .9375rem; color: var(--muted); text-decoration: none;
@@ -84,11 +103,24 @@ a { color: inherit; }
 .site-head nav a:hover { color: var(--ink); border-bottom-color: var(--accent); }
 
 /* Hero */
-.hero { padding-top: clamp(28px, 6vw, 72px); padding-bottom: clamp(56px, 8vw, 96px); }
+.hero {
+  display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr);
+  gap: 48px 56px; align-items: center;
+  padding-top: clamp(28px, 6vw, 72px); padding-bottom: clamp(56px, 8vw, 104px);
+}
+.status {
+  display: inline-flex; align-items: center; gap: 10px;
+  margin: 0 0 20px; padding: 6px 14px 6px 12px;
+  background: var(--accent); color: var(--on-accent);
+  font-family: var(--font-mono); font-size: .8125rem; font-weight: 500;
+  letter-spacing: .04em; text-transform: uppercase; border-radius: 999px;
+}
+.status .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--dot); }
+.eyebrow { margin: 0 0 14px; font-family: var(--font-mono); font-size: .875rem; color: var(--muted); letter-spacing: .02em; }
 h1 {
   font-family: var(--font-display); font-weight: 900; text-transform: uppercase;
-  font-size: clamp(3.5rem, 9vw, 7.5rem); line-height: .86; letter-spacing: .005em;
-  margin: 0; text-wrap: balance;
+  font-size: clamp(3.25rem, 8vw, 6.5rem); line-height: .86; letter-spacing: .005em;
+  margin: 0 0 36px; text-wrap: balance;
 }
 h1 .l1 { display: block; }
 h1 .l2 { position: relative; display: inline-block; }
@@ -98,17 +130,88 @@ h1 .l2::after {
   animation: sweep .9s .2s cubic-bezier(.2, .8, .2, 1) both;
 }
 @keyframes sweep { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.lead { font-size: clamp(1.0625rem, 1.6vw, 1.25rem); line-height: 1.55; max-width: 46ch; margin: 0 0 32px; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 46px; padding: 0 20px;
+  border: 1.5px solid var(--ink); border-radius: 4px; background: transparent; color: var(--ink);
+  font-weight: 600; font-size: 1rem; text-decoration: none;
+  transition: background .15s, color .15s, border-color .15s;
+}
+.btn:hover { background: var(--ink); color: var(--paper); }
+.btn-primary { background: var(--ink); color: var(--paper); }
+.btn-primary:hover { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+
+/* Carte de code */
+.code {
+  margin: 0; background: var(--code-bg); color: var(--code-ink);
+  border: 1px solid var(--code-line); border-radius: 10px; overflow: hidden;
+  box-shadow: 0 28px 56px -32px var(--shadow);
+}
+.code-tab {
+  display: flex; justify-content: space-between; align-items: center; gap: 12px;
+  padding: 11px 16px; border-bottom: 1px solid var(--code-line);
+  font-family: var(--font-mono); font-size: .75rem; color: var(--code-muted);
+}
+.code-tab .file { display: inline-flex; align-items: center; gap: 8px; color: var(--code-ink); }
+.code-tab .file::before { content: ""; width: 8px; height: 8px; border-radius: 2px; background: var(--accent); }
+.code pre {
+  margin: 0; padding: 18px 18px 22px; overflow-x: auto;
+  font-family: var(--font-mono); font-size: .875rem; line-height: 1.75;
+  counter-reset: ln;
+}
+.code .ln { counter-increment: ln; }
+.code .ln::before {
+  content: counter(ln); display: inline-block; width: 2ch; margin-right: 16px;
+  text-align: right; color: var(--code-muted); opacity: .55; user-select: none;
+}
+.code .k { color: var(--accent); }
+.code .s { color: var(--code-str); }
+.code .c { color: var(--code-muted); font-style: italic; }
 
 /* Sections */
 .block {
-  display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 16px 48px;
+  display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 20px 48px;
   padding-top: 56px; padding-bottom: 56px; border-top: 1.5px solid var(--ink);
 }
 .block-head h2 {
   font-family: var(--font-display); font-weight: 800; text-transform: uppercase;
   font-size: clamp(2.25rem, 4vw, 2.75rem); line-height: .95; letter-spacing: .01em; margin: 0;
 }
-.empty { margin: 0; padding-top: .6rem; font-family: var(--font-mono); font-size: .875rem; color: var(--muted); }
+.sub {
+  font-family: var(--font-mono); font-size: .8125rem; font-weight: 500;
+  letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 0 0 12px;
+}
+
+.soon {
+  display: grid; gap: 6px; padding: 22px 24px;
+  border: 1.5px dashed var(--line); border-radius: 8px; background: var(--surface);
+}
+.soon-title { margin: 0; font-weight: 600; font-size: 1.125rem; }
+.soon-text { margin: 0; color: var(--muted); }
+.text-link {
+  justify-self: start; margin-top: 8px; font-family: var(--font-mono); font-size: .875rem;
+  text-decoration: none; border-bottom: 2px solid var(--accent); padding-bottom: 1px;
+}
+.text-link:hover { background: var(--accent); color: var(--on-accent); }
+
+.timeline { list-style: none; margin: 0; padding: 0; }
+.timeline li {
+  display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 6px 24px;
+  padding: 20px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+}
+.when { margin: 0; font-family: var(--font-mono); font-size: .875rem; padding-top: .2em; }
+.timeline h3 { margin: 0; font-size: 1.125rem; font-weight: 600; line-height: 1.35; }
+.org { margin: 2px 0 0; color: var(--muted); font-size: .9375rem; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 0; padding: 0; }
+.chips li {
+  font-family: var(--font-mono); font-size: .875rem; line-height: 1.4;
+  padding: 6px 12px; border: 1px solid var(--line); border-radius: 4px; background: var(--surface);
+}
+
+.contact-lead { font-size: clamp(1.25rem, 2.2vw, 1.625rem); line-height: 1.4; font-weight: 500; max-width: 34ch; margin: 0 0 24px; text-wrap: balance; }
+.contact-note { margin: 20px 0 0; color: var(--muted); font-size: .9375rem; }
 
 /* Pied de page */
 .foot {
@@ -118,9 +221,17 @@ h1 .l2::after {
 }
 .foot p { margin: 0; }
 
+@media (max-width: 920px) {
+  .hero { grid-template-columns: minmax(0, 1fr); }
+  .code { max-width: 520px; }
+}
 @media (max-width: 760px) {
   .block { grid-template-columns: minmax(0, 1fr); padding-top: 40px; padding-bottom: 40px; }
-  .empty { padding-top: 0; }
+}
+@media (max-width: 560px) {
+  .timeline li { grid-template-columns: minmax(0, 1fr); }
+  .code pre { font-size: .78rem; padding: 16px 14px 18px; }
+  .code .ln::before { margin-right: 12px; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -132,7 +243,7 @@ h1 .l2::after {
 <a class="skip" href="#contenu">Aller au contenu</a>
 
 <header class="wrap site-head">
-  <a class="brand" href="#top">C. Ould Otmane</a>
+  <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true">CO</span>C. Ould Otmane</a>
   <nav aria-label="Sections">
     <a href="#projets">Projets</a>
     <a href="#parcours">Parcours</a>
@@ -143,34 +254,81 @@ h1 .l2::after {
 
 <main id="contenu">
   <section class="wrap hero" id="top" aria-label="Présentation">
-    <h1><span class="l1">Chakib</span><span class="l2">Ould Otmane</span></h1>
+    <div class="hero-text">
+      <p class="status"><span class="dot" aria-hidden="true"></span>Disponible pour un stage</p>
+      <p class="eyebrow">Étudiant en BTS SIO · Roubaix</p>
+      <h1><span class="l1">Chakib</span><span class="l2">Ould Otmane</span></h1>
+      <p class="lead">Je développe des applications et des outils web, et je cherche un stage pour mettre mes compétences en pratique en entreprise.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="#contact">Me contacter</a>
+        <a class="btn" href="https://github.com/chakibouldotmane" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+      </div>
+    </div>
+    <figure class="code" aria-label="Mon profil, écrit en JavaScript">
+      <div class="code-tab"><span class="file">profil.js</span><span>JavaScript</span></div>
+<pre><code><span class="ln"><span class="c">// Portfolio BTS SIO</span></span>
+<span class="ln"><span class="k">const</span> chakib = {</span>
+<span class="ln">  formation: <span class="s">"BTS SIO"</span>,</span>
+<span class="ln">  ecole: <span class="s">"Léonard de Vinci, Roubaix"</span>,</span>
+<span class="ln">  langages: [</span>
+<span class="ln">    <span class="s">"SQL"</span>, <span class="s">"Java"</span>, <span class="s">"PHP"</span>,</span>
+<span class="ln">    <span class="s">"JavaScript"</span>, <span class="s">"HTML/CSS"</span>,</span>
+<span class="ln">  ],</span>
+<span class="ln">  github: <span class="s">"chakibouldotmane"</span>,</span>
+<span class="ln">  recherche: <span class="s">"stage"</span>,</span>
+<span class="ln">};</span></code></pre>
+    </figure>
   </section>
 
   <section class="wrap" id="projets" aria-labelledby="t-projets">
     <div class="block">
       <div class="block-head"><h2 id="t-projets">Projets</h2></div>
-      <p class="empty">À venir.</p>
+      <div class="soon">
+        <p class="soon-title">Mes réalisations arrivent bientôt.</p>
+        <p class="soon-text">Cette section présentera mes projets de BTS SIO.</p>
+        <a class="text-link" href="https://github.com/chakibouldotmane" target="_blank" rel="noopener noreferrer">Voir mon GitHub ↗</a>
+      </div>
     </div>
   </section>
 
   <section class="wrap" id="parcours" aria-labelledby="t-parcours">
     <div class="block">
       <div class="block-head"><h2 id="t-parcours">Parcours</h2></div>
-      <p class="empty">À venir.</p>
+      <div>
+        <p class="sub">Formation</p>
+        <ol class="timeline">
+          <li>
+            <p class="when">En cours</p>
+            <div>
+              <h3>BTS SIO, Services informatiques aux organisations</h3>
+              <p class="org">Léonard de Vinci, Roubaix</p>
+            </div>
+          </li>
+        </ol>
+      </div>
     </div>
   </section>
 
   <section class="wrap" id="competences" aria-labelledby="t-competences">
     <div class="block">
       <div class="block-head"><h2 id="t-competences">Compétences</h2></div>
-      <p class="empty">À venir.</p>
+      <div>
+        <p class="sub">Langages</p>
+        <ul class="chips"><li>SQL</li><li>Java</li><li>PHP</li><li>JavaScript</li><li>HTML / CSS</li></ul>
+      </div>
     </div>
   </section>
 
   <section class="wrap" id="contact" aria-labelledby="t-contact">
     <div class="block">
       <div class="block-head"><h2 id="t-contact">Contact</h2></div>
-      <p class="empty">À venir.</p>
+      <div>
+        <p class="contact-lead">Vous proposez un stage en informatique&nbsp;? Je suis disponible pour en parler.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="https://github.com/chakibouldotmane" target="_blank" rel="noopener noreferrer">Voir mon GitHub ↗</a>
+        </div>
+        <p class="contact-note">Basé à Herseaux (Belgique), études à Roubaix.</p>
+      </div>
     </div>
   </section>
 </main>
@@ -178,6 +336,7 @@ h1 .l2::after {
 <footer class="wrap">
   <div class="foot">
     <p>© 2026 Chakib Ould Otmane</p>
+    <p>chakibouldotmane.github.io</p>
   </div>
 </footer>
 </body>
